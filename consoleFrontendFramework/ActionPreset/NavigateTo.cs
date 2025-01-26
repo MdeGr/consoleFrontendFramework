@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace consoleFrontendFramework.ActionPreset
 {
-    internal class NavigateTo: IAction
+    public class NavigateTo: IAction
     {
         string name;
         IUI target;
 
-        NavigateTo (string name, IUI returnUI)
+        public NavigateTo (string name, IUI returnUI)
         {
             this.name = name;
             this.target = returnUI;

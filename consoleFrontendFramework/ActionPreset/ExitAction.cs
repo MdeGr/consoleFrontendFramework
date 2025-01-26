@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace consoleFrontendFramework.ActionPreset
 {
-    internal class ExitAction : IAction
+    public class ExitAction : IAction
     {
         IUI returnUI;
         public ExitAction(IUI returnUI)

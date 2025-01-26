@@ -17,7 +17,7 @@ namespace consoleFrontendFramework.UiPreset
         public ExitUI(IUI returnUI)
         {
             this.returnUi = returnUI;
-            header = "Closing application...\n";
+            header = "Closing application...\n\n 1) confirm \n 2) Back";
         }
         string IUI.GetScreen()
         {

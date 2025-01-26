@@ -5,17 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace consoleFrontendFramework.preset
+namespace consoleFrontendFramework.UiPreset
 {
     public class NavigatingUI : IUI
     {
         string? header;
         string? error;
         IAction[] actions;
-        public NavigatingUI(string? header, IAction[] actions)
+
+        public bool setActions (IAction[] actions)
+        {
+            try
+            {
+                this.actions = actions;
+                return true;
+            }
+            catch { return false; }
+        }
+        public NavigatingUI(string? header)
         {
             this.header = header;
-            this.actions = actions;
         }
         string IUI.GetScreen()
         {
@@ -29,7 +38,7 @@ namespace consoleFrontendFramework.preset
             {
                 screen += error;
             }
-            for (int i=0; 1<actions.Length; i++)
+            for (int i=0; i<actions.Length; i++)
             {
                 screen += $"{i+1}) {actions[i].GetName()}\n";
             }
@@ -39,12 +48,14 @@ namespace consoleFrontendFramework.preset
 
         IUI? IUI.input(string? input)
         {
-            int? actionNumber = null;
-            try { actionNumber = int.Parse(input); } catch { }
+            if (input == null || input == "") { return this; }
 
-            if (actionNumber == null)
+            int? actionNumber = null;
+            try {actionNumber = int.Parse(input) - 1; } catch { }
+
+            if (!actionNumber.HasValue)
             {
-                error = "Input can only contain naumbers\n\n";
+                error = "Input can only contain numbers\n\n";
                 return this;
             }
             else
