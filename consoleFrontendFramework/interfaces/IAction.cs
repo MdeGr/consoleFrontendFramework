@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace consoleFrontendFramework.interfaces
 {
-    internal interface IInput
+    public interface IAction
     {
+        string GetName ();
+        IUI? Run ();
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace consoleFrontendFramework.interfaces
 {
-    internal interface IUI
+    public interface IUI
     {
-        internal string GetScreen();
-        internal IUI? input(string? input);
+        public string GetScreen();
+        public IUI? input(string? input);
     }
 }
