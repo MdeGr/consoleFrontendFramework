@@ -11,8 +11,8 @@ namespace consoleFrontendFramework.preset
     {
         string? header;
         string? error;
-        List<IAction> actions;
-        public NavigatingUI(string? header, List<IAction> actions)
+        IAction[] actions;
+        public NavigatingUI(string? header, IAction[] actions)
         {
             this.header = header;
             this.actions = actions;
@@ -29,9 +29,9 @@ namespace consoleFrontendFramework.preset
             {
                 screen += error;
             }
-            foreach (IAction action in actions)
+            for (int i=0; 1<actions.Length; i++)
             {
-                screen += action.GetName();
+                screen += $"{i+1}) {actions[i].GetName()}\n";
             }
 
             return screen;
@@ -44,12 +44,20 @@ namespace consoleFrontendFramework.preset
 
             if (actionNumber == null)
             {
-                error = "Input can only contain naumbers";
-                return null;
+                error = "Input can only contain naumbers\n\n";
+                return this;
             }
             else
             {
-                return actions[actionNumber.Value].Run();
+                try
+                {
+                    return actions[actionNumber.Value].Run();
+                }
+                catch
+                {
+                    error = $"number cannot be bigger the {actions.Length}\n\n";
+                    return this;
+                }
             }
         }
     }
