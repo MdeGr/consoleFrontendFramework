@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace consoleFrontendFramework.preset
 {
-    public class UIManger
+    public class UIManager
     {
         bool Running;
         bool exiting;
         IUI? ui;
 
-        public UIManger (IUI? openingUi)
+        public UIManager (IUI? openingUi)
         {
             this.ui = openingUi;
         }
