@@ -9,24 +9,15 @@ namespace consoleFrontendFramework.UiPreset
 {
     public class NavigatingUI : IUI
     {
-        string? header;
-        string? error;
-        IAction[] actions;
+        private string? header;
+        private string? error;
+        public IAction[] actions;
 
-        public bool setActions (IAction[] actions)
-        {
-            try
-            {
-                this.actions = actions;
-                return true;
-            }
-            catch { return false; }
-        }
         public NavigatingUI(string? header)
         {
             this.header = header;
         }
-        string IUI.GetScreen()
+        public virtual string GetScreen()
         {
             string screen = "";
 
