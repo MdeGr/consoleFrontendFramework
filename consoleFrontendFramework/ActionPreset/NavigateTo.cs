@@ -23,7 +23,7 @@ namespace consoleFrontendFramework.ActionPreset
             return name;
         }
 
-        IUI? IAction.Run()
+        public virtual IUI? Run()
         {
             return target;
         }
